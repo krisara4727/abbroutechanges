@@ -10,7 +10,7 @@ type Props = RouteComponentProps<{
 
 const integrationsEditor = (props: Props) => {
   const { history, location, match } = props;
-
+  console.log("chivte integrationeditor");
   return (
     <div
       style={{

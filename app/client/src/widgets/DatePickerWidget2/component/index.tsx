@@ -86,6 +86,8 @@ export const DateInputWrapper = styled.div<{
     flex-grow: 0;
   }
   width: 100%;
+  ${({ compactMode, labelPosition }) =>
+    labelPosition !== LabelPosition.Top && compactMode && `overflow-x: hidden`};
 `;
 
 class DatePickerComponent extends React.Component<

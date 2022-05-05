@@ -7,6 +7,7 @@ import { AppLayoutConfig } from "reducers/entityReducers/pageListReducer";
 import { APP_MODE } from "entities/App";
 import { ApplicationVersion } from "actions/applicationActions";
 import { Datasource } from "entities/Datasource";
+import { BASE_URL } from "constants/routes";
 
 export type EvaluationVersion = number;
 
@@ -162,7 +163,7 @@ export interface ImportApplicationRequest {
 }
 
 class ApplicationApi extends Api {
-  static baseURL = "v1/applications";
+  static baseURL = BASE_URL + "v1/applications";
   static publishURLPath = (applicationId: string) =>
     `/publish/${applicationId}`;
   static createApplicationPath = (orgId: string) => `?orgId=${orgId}`;

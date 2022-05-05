@@ -138,20 +138,9 @@ function IframeComponent(props: IframeComponentProps) {
       {message ? (
         message
       ) : srcDoc ? (
-        <iframe
-          allow="camera; microphone"
-          ref={frameRef}
-          src={source}
-          srcDoc={srcDoc}
-          title={title}
-        />
+        <iframe ref={frameRef} src={source} srcDoc={srcDoc} title={title} />
       ) : (
-        <iframe
-          allow="camera; microphone"
-          ref={frameRef}
-          src={source}
-          title={title}
-        />
+        <iframe ref={frameRef} src={source} title={title} />
       )}
     </IframeContainer>
   );

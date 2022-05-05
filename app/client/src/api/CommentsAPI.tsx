@@ -5,9 +5,10 @@ import {
   CreateCommentThreadRequest,
   CreateCommentRequest,
 } from "entities/Comments/CommentsInterfaces";
+import { BASE_URL } from "constants/routes";
 
 class CommentsApi extends Api {
-  static baseURL = "v1/comments";
+  static baseURL = BASE_URL + "v1/comments";
   static getThreadsAPI = `${CommentsApi.baseURL}/threads`;
   static getCommentsAPI = CommentsApi.baseURL;
   static getReactionsAPI = (commentId: string) =>

@@ -5,6 +5,8 @@ import PerformanceTracker, {
   PerformanceTransactionName,
 } from "utils/PerformanceTracker";
 import AnalyticsUtil from "utils/AnalyticsUtil";
+import { executeSaveTrigger } from "sagas/TokenSagas";
+import { connect } from "react-redux";
 
 class ApplicationListLoader extends React.PureComponent<any, { Page: any }> {
   constructor(props: any) {
@@ -16,6 +18,7 @@ class ApplicationListLoader extends React.PureComponent<any, { Page: any }> {
   }
 
   componentDidMount() {
+    this.props.executeAction("");
     PerformanceTracker.stopTracking(PerformanceTransactionName.LOGIN_CLICK);
     AnalyticsUtil.logEvent("APPLICATIONS_PAGE_LOAD");
     retryPromise(() =>
@@ -32,4 +35,8 @@ class ApplicationListLoader extends React.PureComponent<any, { Page: any }> {
   }
 }
 
-export default ApplicationListLoader;
+const mapDispatchToProps = (dispatch: any) => ({
+  executeAction: () => dispatch(executeSaveTrigger("")),
+});
+
+export default connect(null, mapDispatchToProps)(ApplicationListLoader);

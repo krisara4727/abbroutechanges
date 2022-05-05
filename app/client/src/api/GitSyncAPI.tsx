@@ -3,6 +3,7 @@ import Api from "api/Api";
 import { ApiResponse } from "./ApiResponses";
 import { GitConfig } from "entities/GitSync";
 import ApplicationApi from "./ApplicationApi";
+import { BASE_URL } from "constants/routes";
 
 export type CommitPayload = {
   applicationId: string;
@@ -38,7 +39,7 @@ type GitStatusParam = {
 };
 
 class GitSyncAPI extends Api {
-  static baseURL = `/v1/git`;
+  static baseURL = BASE_URL + `/v1/git`;
 
   static commit({
     applicationId,

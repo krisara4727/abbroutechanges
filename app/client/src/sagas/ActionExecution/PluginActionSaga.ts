@@ -105,8 +105,6 @@ import { submitCurlImportForm } from "actions/importActions";
 import { getBasePath } from "pages/Editor/Explorer/helpers";
 import { isTrueObject } from "workers/evaluationUtils";
 import { handleExecuteJSFunctionSaga } from "sagas/JSPaneSagas";
-import { Plugin } from "api/PluginApi";
-
 enum ActionResponseDataTypes {
   BINARY = "BINARY",
 }
@@ -837,24 +835,17 @@ function* executePluginActionSaga(
         response: payload,
       }),
     );
-    let plugin: Plugin | undefined;
+    let plugin;
     if (!!pluginAction.pluginId) {
       plugin = yield select(getPlugin, pluginAction.pluginId);
     }
-
-    if (!!plugin) {
-      const responseType = payload?.dataTypes.find(
-        (type) =>
-          plugin?.responseType && type.dataType === plugin?.responseType,
-      );
-      yield put(
-        setActionResponseDisplayFormat({
-          id: actionId,
-          field: "responseDisplayFormat",
-          value: responseType ? responseType?.dataType : "JSON",
-        }),
-      );
-    }
+    yield put(
+      setActionResponseDisplayFormat({
+        id: actionId,
+        field: "responseDisplayFormat",
+        value: plugin && plugin.responseType ? plugin.responseType : "JSON",
+      }),
+    );
     return {
       payload,
       isError: isErrorResponse(response),

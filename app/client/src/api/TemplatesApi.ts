@@ -3,6 +3,7 @@ import Api from "api/Api";
 import { ApiResponse } from "./ApiResponses";
 import { WidgetType } from "constants/WidgetConstants";
 import { ApplicationResponsePayload } from "./ApplicationApi";
+import { BASE_URL } from "constants/routes";
 
 export interface Template {
   id: string;
@@ -33,7 +34,9 @@ export interface ImportTemplateResponse extends ApiResponse {
 }
 
 class TemplatesAPI extends Api {
-  static baseUrl = "v1";
+  static baseUrl =
+    //BASE_URL +
+    "v1";
 
   static getAllTemplates(): AxiosPromise<FetchTemplatesResponse> {
     return Api.get(TemplatesAPI.baseUrl + `/app-templates`);

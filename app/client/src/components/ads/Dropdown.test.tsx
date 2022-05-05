@@ -11,7 +11,7 @@ import Dropdown from "./Dropdown";
 import { lightTheme } from "selectors/themeSelectors";
 import userEvent from "@testing-library/user-event";
 
-const optionsProps: any = {
+const props = {
   options: [
     { label: "Primary", value: "PRIMARY" },
     { label: "Secondary", value: "SECONDARY" },
@@ -24,13 +24,8 @@ const optionsProps: any = {
   showLabelOnly: true,
 };
 
-const noOptionsProps = {
-  options: [],
-};
-
 const getTestComponent = (
   handleOnSelect: any = undefined,
-  props = optionsProps,
   allowDeselection?: boolean,
 ) => (
   <ThemeProvider theme={lightTheme}>
@@ -140,15 +135,15 @@ describe("<Dropdown /> - Keyboard Navigation", () => {
     userEvent.keyboard("{ArrowDown}");
     userEvent.keyboard("{Enter}");
     expect(handleOnSelect).toHaveBeenLastCalledWith(
-      optionsProps.options[1].value,
-      optionsProps.options[1],
+      props.options[1].value,
+      props.options[1],
     );
     userEvent.keyboard("{Enter}");
     userEvent.keyboard("{ArrowDown}");
     userEvent.keyboard(" ");
     expect(handleOnSelect).toHaveBeenLastCalledWith(
-      optionsProps.options[2].value,
-      optionsProps.options[2],
+      props.options[2].value,
+      props.options[2],
     );
   });
 
@@ -184,26 +179,26 @@ describe("<Dropdown /> - allowDeselection behaviour", () => {
     // click on Second Item
     fireEvent.click(screen.queryAllByRole("option")[1]);
     expect(screen.getByRole("option", { selected: true })).toHaveTextContent(
-      optionsProps.options[1].label,
+      props.options[1].label,
     );
     expect(screen.getByRole("listbox")).toHaveTextContent(
-      optionsProps.options[1].label,
+      props.options[1].label,
     );
 
     // click on Second Item Again
     fireEvent.click(screen.queryAllByRole("option")[1]);
     expect(screen.getByRole("option", { selected: true })).toHaveTextContent(
-      optionsProps.options[1].label,
+      props.options[1].label,
     );
     expect(screen.getByRole("listbox")).toHaveTextContent(
-      optionsProps.options[1].label,
+      props.options[1].label,
     );
     expect(screen.getByRole("option", { selected: true })).not.toBeNull();
   });
 
   it("Test allowDeselection = true behaviour", async () => {
     const handleOnSelect = jest.fn();
-    render(getTestComponent(handleOnSelect, optionsProps, true));
+    render(getTestComponent(handleOnSelect, true));
     expect(screen.getByRole("listbox")).toHaveTextContent("Primary");
 
     const dropdown = screen
@@ -218,30 +213,14 @@ describe("<Dropdown /> - allowDeselection behaviour", () => {
     // click on Third Item
     fireEvent.click(screen.queryAllByRole("option")[2]);
     expect(screen.getByRole("option", { selected: true })).toHaveTextContent(
-      optionsProps.options[2].label,
+      props.options[2].label,
     );
     expect(screen.getByRole("listbox")).toHaveTextContent(
-      optionsProps.options[2].label,
+      props.options[2].label,
     );
 
     // click on Third Item Again, that should unselect everything
     fireEvent.click(screen.queryAllByRole("option")[2]);
     expect(screen.queryByRole("option", { selected: true })).toBeNull();
-  });
-});
-
-describe("<Dropdown /> - when the options is an empty array", () => {
-  it("Hide options renderer when option list is empty", () => {
-    const handleOnSelect = jest.fn();
-    render(getTestComponent(handleOnSelect, noOptionsProps));
-
-    const dropdown = screen
-      .getByRole("listbox")
-      .querySelector(".bp3-popover-target");
-    expect(dropdown).not.toBeNull();
-
-    // open dropdown
-    fireEvent.click(dropdown as Element);
-    expect(screen.queryByTestId("dropdown-options-wrapper")).toBeNull();
   });
 });

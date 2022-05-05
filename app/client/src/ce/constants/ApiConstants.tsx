@@ -1,3 +1,5 @@
+import { BASE_URL } from "constants/routes";
+
 export const REQUEST_TIMEOUT_MS = 20000;
 export const DEFAULT_ACTION_TIMEOUT = 10000;
 export const DEFAULT_EXECUTE_ACTION_TIMEOUT_MS = 15000;
@@ -33,4 +35,4 @@ export const SIGNUP_SUBMIT_PATH = "users";
 export const SUPER_USER_SUBMIT_PATH = `${SIGNUP_SUBMIT_PATH}/super`;
 
 export const getExportAppAPIRoute = (applicationId: string) =>
-  `/api/v1/applications/export/${applicationId}`;
+  BASE_URL + `/api/v1/applications/export/${applicationId}`;

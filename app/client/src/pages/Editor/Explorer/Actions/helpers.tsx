@@ -14,6 +14,8 @@ import {
   queryEditorIdURL,
   saasEditorApiIdURL,
 } from "RouteBuilder";
+import postgresql from "assets/images/postgresql.svg";
+import restapi from "assets/images/RestAPI.png";
 
 // TODO [new_urls] update would break for existing paths
 // using a common todo, this needs to be fixed
@@ -79,7 +81,12 @@ export const ACTION_PLUGIN_MAP: Array<ActionGroupConfig | undefined> = [
       if (plugin && plugin.iconLocation)
         return (
           <EntityIcon>
-            <img alt="entityIcon" src={plugin.iconLocation} />
+            {console.log("chivte helper.tst", plugin.name)}
+            <img
+              alt="entityIcon"
+              //src={plugin.iconLocation}
+              src={plugin.name === "PostgreSQL" ? postgresql : restapi}
+            />
           </EntityIcon>
         );
       else if (plugin && plugin.type === PluginType.DB) return dbQueryIcon;

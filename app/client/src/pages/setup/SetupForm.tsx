@@ -27,6 +27,7 @@ import { isEmail, isStrongPassword } from "utils/formhelpers";
 import { AppState } from "reducers";
 import { SUPER_USER_SUBMIT_PATH } from "@appsmith/constants/ApiConstants";
 import { useState } from "react";
+import { BASE_URL } from "constants/routes";
 
 const PageWrapper = styled.div`
   width: 100%;
@@ -123,7 +124,7 @@ export type SetupFormProps = DetailsFormValues & {
   >;
 
 function SetupForm(props: SetupFormProps) {
-  const signupURL = `/api/v1/${SUPER_USER_SUBMIT_PATH}`;
+  const signupURL = BASE_URL + `/api/v1/${SUPER_USER_SUBMIT_PATH}`;
   const [showDetailsForm, setShowDetailsForm] = useState(true);
   const formRef = useRef<HTMLFormElement>(null);
   const onSubmit = () => {

@@ -5,9 +5,10 @@ import Text, { TextType } from "components/ads/Text";
 import Icon, { IconSize } from "components/ads/Icon";
 import { Classes } from "components/ads/common";
 import { useLocation } from "react-router-dom";
+import { BASE_URL } from "constants/routes";
 
 const StyledManageUsers = styled("a")`
-  margin-top: 12px;
+  margin-top: 20px;
   display: inline-flex;
   &&&& {
     text-decoration: none;
@@ -46,7 +47,7 @@ function ManageUsers({ orgId }: { orgId: string }) {
     <StyledManageUsers
       className="manageUsers"
       onClick={() => {
-        history.push(`/org/${orgId}/settings/members`);
+        history.push(BASE_URL + `/org/${orgId}/settings/members`);
       }}
     >
       <Text type={TextType.H6}>MANAGE USERS</Text>

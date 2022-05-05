@@ -5,7 +5,6 @@ import WidgetStyleContainer, {
 } from "components/designSystems/appsmith/WidgetStyleContainer";
 
 import { TextSize } from "constants/WidgetConstants";
-import { countOccurrences } from "workers/helpers";
 
 import { ValidationTypes } from "constants/WidgetValidation";
 import { DerivedPropertiesMap } from "utils/WidgetFactory";
@@ -15,7 +14,6 @@ import TextComponent, { TextAlign } from "../component";
 import { AutocompleteDataType } from "utils/autocomplete/TernServer";
 import { OverflowTypes } from "../constants";
 
-const MAX_HTML_PARSING_LENGTH = 1000;
 class TextWidget extends BaseWidget<TextWidgetProps, WidgetState> {
   static getPropertyPaneConfig() {
     return [
@@ -266,20 +264,7 @@ class TextWidget extends BaseWidget<TextWidgetProps, WidgetState> {
     ];
   }
 
-  /**
-   * Disable html parsing for long continuous texts
-   * @returns boolean
-   */
-  shouldDisableLink = (): boolean => {
-    const text = this.props.text || "";
-    const count: number = countOccurrences(text, "\n", false);
-    return count === 0 && text.length > MAX_HTML_PARSING_LENGTH;
-  };
-
   getPageView() {
-    const disableLink: boolean = this.props.disableLink
-      ? true
-      : this.shouldDisableLink();
     return (
       <WidgetStyleContainer
         {...pick(this.props, [
@@ -292,7 +277,7 @@ class TextWidget extends BaseWidget<TextWidgetProps, WidgetState> {
         <TextComponent
           backgroundColor={this.props.backgroundColor}
           bottomRow={this.props.bottomRow}
-          disableLink={disableLink}
+          disableLink={this.props.disableLink || false}
           fontSize={this.props.fontSize}
           fontStyle={this.props.fontStyle}
           isLoading={this.props.isLoading}

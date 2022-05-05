@@ -652,7 +652,6 @@ const lightShades = [
   "#F86A2B",
   "#FFDEDE",
   "#575757",
-  "#191919",
 ] as const;
 
 type ShadeColor = typeof darkShades[number] | typeof lightShades[number];
@@ -1374,14 +1373,13 @@ const editorBottomBar = {
 const gitSyncModal = {
   menuBackgroundColor: Colors.ALABASTER_ALT,
   separator: Colors.ALTO2,
-  closeIcon: Colors.SCORPION,
-  closeIconHover: Colors.COD_GRAY,
+  closeIcon: "rgba(29, 28, 29, 0.7);",
 };
 type GitSyncModalColors = typeof gitSyncModal;
 
 const tabItemBackgroundFill = {
   highlightBackground: Colors.Gallery,
-  highlightTextColor: Colors.COD_GRAY,
+  highlightTextColor: Colors.CODE_GRAY,
   textColor: Colors.CHARCOAL,
 };
 
@@ -2614,7 +2612,7 @@ export const light: ColorType = {
   },
   modal: {
     bg: lightShades[11],
-    headerText: lightShades[20],
+    headerText: lightShades[10],
     iconColor: lightShades[5],
     iconBg: lightShades[18],
     user: {

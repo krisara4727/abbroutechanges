@@ -269,6 +269,7 @@ function CreateNewDatasource({
   }, [active]);
   return (
     <div id="new-datasources" ref={newDatasourceRef}>
+      {console.log("chivte databases", location)}
       <Text type={TextType.H2}>Databases</Text>
       <NewQueryScreen
         history={history}

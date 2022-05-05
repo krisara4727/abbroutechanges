@@ -146,6 +146,9 @@ import ProgressWidget, {
 } from "widgets/ProgressWidget";
 import { registerWidget } from "./WidgetRegisterHelpers";
 import { WidgetConfiguration } from "widgets/constants";
+import TabulatorWidget, {
+  CONFIG as TABULATOR_WIDGET_CONFIG,
+} from "widgets/TabulatorWidget";
 
 export const ALL_WIDGETS_AND_CONFIG = [
   [CanvasWidget, CANVAS_WIDGET_CONFIG],
@@ -201,6 +204,7 @@ export const ALL_WIDGETS_AND_CONFIG = [
   [CurrencyInputWidget, CURRENCY_INPUT_WIDGET_V2_CONFIG],
   [JSONFormWidget, JSON_FORM_WIDGET_CONFIG],
   [ProgressWidget, PROGRESS_WIDGET_CONFIG],
+  [TabulatorWidget, TABULATOR_WIDGET_CONFIG],
   /*
    * If a newly added widget works well inside the list widget,
    * please add widget type in the List widget's allowed widget

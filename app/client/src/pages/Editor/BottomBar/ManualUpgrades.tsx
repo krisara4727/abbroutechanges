@@ -28,6 +28,7 @@ import { createMessage, CLEAN_URL_UPDATE } from "@appsmith/constants/messages";
 import { useLocation } from "react-router";
 import DisclaimerIcon from "remixicon-react/ErrorWarningLineIcon";
 import AnalyticsUtil from "utils/AnalyticsUtil";
+import { BASE_URL } from "constants/routes";
 
 const StyledList = styled.ul`
   list-style: disc;
@@ -204,8 +205,8 @@ function ManualUpgrades() {
             formatter.bind(
               null,
               window.location.href.replace(
-                `/applications/${applicationId}/pages/${pageId}`,
-                `/app/${applicationSlug}/${pageSlug}-${pageId}`,
+                BASE_URL + `/applications/${applicationId}/pages/${pageId}`,
+                BASE_URL + `/app/${applicationSlug}/${pageSlug}-${pageId}`,
               ),
             ),
           ),

@@ -92,6 +92,7 @@ function EditorsRouter() {
 
   return (
     <Wrapper isVisible={isVisible} onClick={handleClose}>
+      {console.log("chivte routes.tsx", path)}
       <PaneDrawer isVisible={isVisible} onClick={preventClose}>
         <Switch key={path}>
           <SentryRoute

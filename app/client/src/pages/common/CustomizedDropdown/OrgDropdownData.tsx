@@ -5,6 +5,7 @@ import { getOnSelectAction, DropdownOnSelectActions } from "./dropdownHelpers";
 import { CustomizedDropdownProps } from "./index";
 import { User } from "constants/userConstants";
 import _ from "lodash";
+import { BASE_URL } from "constants/routes";
 
 export const options = (
   user: User,
@@ -26,7 +27,7 @@ export const options = (
             content: "Organization Settings",
             onSelect: () =>
               getOnSelectAction(DropdownOnSelectActions.REDIRECT, {
-                path: `/org/${orgId}/settings`,
+                path: BASE_URL + `/org/${orgId}/settings`,
               }),
           },
           {
@@ -37,7 +38,7 @@ export const options = (
             content: "Members",
             onSelect: () =>
               getOnSelectAction(DropdownOnSelectActions.REDIRECT, {
-                path: `/org/${orgId}/settings`,
+                path: BASE_URL + `/org/${orgId}/settings`,
               }),
           },
         ],

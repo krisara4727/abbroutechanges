@@ -9,13 +9,16 @@ import { getJSCollectionById } from "selectors/editorSelectors";
 import CenteredWrapper from "components/designSystems/appsmith/CenteredWrapper";
 import Spinner from "components/editorComponents/Spinner";
 import styled from "styled-components";
+import { getPluginSettingConfigs } from "selectors/entitiesSelector";
+import _ from "lodash";
 
 const LoadingContainer = styled(CenteredWrapper)`
   height: 50%;
 `;
 interface ReduxStateProps {
-  jsCollection: JSCollection | undefined;
+  jsAction: JSCollection | undefined;
   isCreating: boolean;
+  settingsConfig: any;
 }
 
 type Props = ReduxStateProps &
@@ -23,7 +26,7 @@ type Props = ReduxStateProps &
 
 class JSEditor extends React.Component<Props> {
   render() {
-    const { isCreating, jsCollection } = this.props;
+    const { isCreating, jsAction, settingsConfig } = this.props;
     if (isCreating) {
       return (
         <LoadingContainer>
@@ -31,19 +34,24 @@ class JSEditor extends React.Component<Props> {
         </LoadingContainer>
       );
     }
-    if (!!jsCollection) {
-      return <JsEditorForm jsCollection={jsCollection} />;
+    if (!!jsAction) {
+      return (
+        <JsEditorForm jsAction={jsAction} settingsConfig={settingsConfig} />
+      );
     }
     return null;
   }
 }
 
 const mapStateToProps = (state: AppState, props: Props): ReduxStateProps => {
-  const jsCollection = getJSCollectionById(state, props);
+  const jsAction = getJSCollectionById(state, props);
   const { isCreating } = state.ui.jsPane;
+  const pluginId = _.get(jsAction, "pluginId", "");
+  const settingsConfig = getPluginSettingConfigs(state, pluginId);
 
   return {
-    jsCollection,
+    jsAction,
+    settingsConfig,
     isCreating: isCreating,
   };
 };

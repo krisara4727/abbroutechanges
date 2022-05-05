@@ -8,7 +8,6 @@ import Text, { FontWeight, TextType } from "components/ads/Text";
 import Button, { IconPositions, Size } from "components/ads/Button";
 import EntityNotFoundPane from "pages/Editor/EntityNotFoundPane";
 import Template from "./Template";
-import { Template as TemplateInterface } from "api/TemplatesApi";
 import DatasourceChip from "./DatasourceChip";
 import WidgetInfo from "./WidgetInfo";
 import {
@@ -40,7 +39,6 @@ import {
   SIMILAR_TEMPLATES,
   VIEW_ALL_TEMPLATES,
 } from "@appsmith/constants/messages";
-import AnalyticsUtil from "utils/AnalyticsUtil";
 
 const breakpointColumnsObject = {
   default: 4,
@@ -268,19 +266,6 @@ function TemplateView() {
     history.goBack();
   };
 
-  const onSimilarTemplateClick = (template: TemplateInterface) => {
-    AnalyticsUtil.logEvent("SIMILAR_TEMPLATE_CLICK", {
-      from: {
-        id: currentTemplate?.id,
-        name: currentTemplate?.title,
-      },
-      to: {
-        id: template.id,
-        name: template.title,
-      },
-    });
-  };
-
   return (
     <PageWrapper>
       {isFetchingTemplate ? (
@@ -417,11 +402,7 @@ function TemplateView() {
                   columnClassName="grid_column"
                 >
                   {similarTemplates.map((template) => (
-                    <Template
-                      key={template.id}
-                      onClick={() => onSimilarTemplateClick(template)}
-                      template={template}
-                    />
+                    <Template key={template.id} template={template} />
                   ))}
                 </Masonry>
               </Section>

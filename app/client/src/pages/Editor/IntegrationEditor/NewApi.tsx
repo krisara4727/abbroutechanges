@@ -312,6 +312,7 @@ function NewApiScreen(props: Props) {
                 });
               }}
             >
+              {console.log("chivte newapi.tsx", p.name)}
               <CardContentWrapper>
                 <div className="content-icon-wrapper">
                   <img

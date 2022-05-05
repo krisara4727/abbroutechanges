@@ -6,7 +6,7 @@ set -o errexit
 set -o xtrace
 
 if [ -z "$APPSMITH_SERVER_PROXY_PASS" ]; then
-  export APPSMITH_SERVER_PROXY_PASS='http://localhost:8080'
+  export APPSMITH_SERVER_PROXY_PASS='http://localhost:8080/formbuilderui'
   echo "No explicit value for APPSMITH_SERVER_PROXY_PASS, using '$APPSMITH_SERVER_PROXY_PASS'."
 fi
 

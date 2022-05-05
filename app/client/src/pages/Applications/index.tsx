@@ -96,6 +96,7 @@ import {
   DEFAULT_BASE_URL_BUILDER_PARAMS,
   updateURLFactory,
 } from "RouteBuilder";
+import { BASE_URL } from "constants/routes";
 
 const OrgDropDown = styled.div<{ isMobile?: boolean }>`
   display: flex;
@@ -791,7 +792,9 @@ function ApplicationsSection(props: any) {
                                 getOnSelectAction(
                                   DropdownOnSelectActions.REDIRECT,
                                   {
-                                    path: `/org/${organization.id}/settings/general`,
+                                    path:
+                                      BASE_URL +
+                                      `/org/${organization.id}/settings/general`,
                                   },
                                 )
                               }
@@ -820,7 +823,9 @@ function ApplicationsSection(props: any) {
                                 getOnSelectAction(
                                   DropdownOnSelectActions.REDIRECT,
                                   {
-                                    path: `/org/${organization.id}/settings/members`,
+                                    path:
+                                      BASE_URL +
+                                      `/org/${organization.id}/settings/members`,
                                   },
                                 )
                               }

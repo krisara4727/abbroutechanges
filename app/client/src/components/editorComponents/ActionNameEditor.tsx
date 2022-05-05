@@ -20,6 +20,7 @@ import {
   ACTION_NAME_PLACEHOLDER,
   createMessage,
 } from "@appsmith/constants/messages";
+import RestApi from "assets/images/RestAPI.png";
 
 const ApiNameWrapper = styled.div<{ page?: string }>`
   min-width: 50%;
@@ -100,10 +101,12 @@ function ActionNameEditor(props: ActionNameEditorProps) {
               display: "flex",
             }}
           >
+            {console.log("chivte actionnameeditor.tsx", currentPlugin?.name)}
             {currentPlugin && (
               <ApiIconWrapper
                 alt={currentPlugin.name}
-                src={currentPlugin.iconLocation}
+                //src={currentPlugin.iconLocation}
+                src={RestApi}
               />
             )}
             <EditableText

@@ -6,8 +6,8 @@ const path = require("path");
 
 const {
   delay,
-  getFormattedTime,
   login,
+  getFormattedTime,
   sortObjectKeys,
 } = require("./utils/utils");
 const selectors = {
@@ -115,7 +115,7 @@ module.exports = class Perf {
       .pop();
 
     await this.page.evaluate(
-      async ({ dsl, pageId }) => {
+      async ({ pageId, dsl }) => {
         const layoutId = await fetch(`/api/v1/pages/${pageId}`)
           .then((response) => response.json())
           .then((data) => data.data.layouts[0].id);
@@ -163,7 +163,7 @@ module.exports = class Perf {
 
   generateReport = async () => {
     const report = {};
-    this.traces.forEach(({ action, path }) => {
+    this.traces.forEach(({ path, action }) => {
       report[action] = {};
       const trace = require(path);
       const tasks = new Tracelib.default(trace.traceEvents);

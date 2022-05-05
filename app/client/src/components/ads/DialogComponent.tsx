@@ -26,9 +26,8 @@ const StyledDialog = styled(Dialog)<{
       padding: 0;
       background: ${(props) => props.theme.colors.modal.bg};
       box-shadow: none;
-      min-height: unset;
-      svg {
-        color: ${Colors.GREY_800};
+      .${Classes.ICON} {
+        color: ${(props) => props.theme.colors.modal.iconColor};
       }
 
       .${Classes.BUTTON}.${Classes.MINIMAL}:hover {
@@ -40,23 +39,19 @@ const StyledDialog = styled(Dialog)<{
       color: ${(props) => props.theme.colors.modal.headerText};
       font-weight: ${(props) => props.theme.typography.h1.fontWeight};
       font-size: ${(props) => props.theme.typography.h1.fontSize}px;
-      line-height: unset;
+      line-height: ${(props) => props.theme.typography.h1.lineHeight}px;
       letter-spacing: ${(props) => props.theme.typography.h1.letterSpacing};
     }
 
     .${Classes.DIALOG_CLOSE_BUTTON} {
-      color: ${Colors.SCORPION};
+      color: ${Colors.CHARCOAL};
       min-width: 0;
       padding: 0;
 
       svg {
-        fill: ${Colors.SCORPION};
+        fill: ${Colors.CHARCOAL};
         width: 24px;
         height: 24px;
-
-        &:hover {
-          fill: ${Colors.COD_GRAY};
-        }
       }
     }
 
@@ -83,7 +78,7 @@ const StyledDialog = styled(Dialog)<{
 
     & .${Classes.DIALOG_BODY} {
       margin: 0;
-      margin-top: ${(props) => (props.noModalBodyMarginTop ? "0px" : "16px")};
+      margin-top: ${(props) => (props.noModalBodyMarginTop ? "0px" : "24px")};
       overflow: auto;
     }
 

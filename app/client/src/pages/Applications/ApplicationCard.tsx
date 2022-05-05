@@ -60,6 +60,8 @@ import { Colors } from "constants/Colors";
 import { CONNECTED_TO_GIT, createMessage } from "@appsmith/constants/messages";
 import { builderURL, viewerURL } from "RouteBuilder";
 import history from "utils/history";
+import { useDispatch } from "react-redux";
+import { executeSaveTrigger } from "sagas/TokenSagas";
 
 type NameWrapperProps = {
   hasReadPermission: boolean;
@@ -425,6 +427,7 @@ export function ApplicationCard(props: ApplicationCardProps) {
     theme.colors.appCardColors,
   );
   let initials = initialsAndColorCode[0];
+  const dispatch = useDispatch();
 
   const [showOverlay, setShowOverlay] = useState(false);
   const [selectedColor, setSelectedColor] = useState<string>("");
@@ -454,6 +457,12 @@ export function ApplicationCard(props: ApplicationCardProps) {
     }
     setSelectedColor(colorCode);
   }, [props.application.color]);
+
+  function refreshFunction(e: any) {
+    e.preventDefault();
+    dispatch(executeSaveTrigger(""));
+  }
+  window.addEventListener("storage", refreshFunction);
 
   useEffect(() => {
     if (props.share) {
@@ -821,6 +830,8 @@ export function ApplicationCard(props: ApplicationCardProps) {
                       iconPosition={IconPositions.left}
                       onClick={(e) => {
                         e.stopPropagation();
+                        if (applicationId)
+                          dispatch(executeSaveTrigger(applicationId));
                         history.push(viewApplicationURL);
                       }}
                       size={Size.medium}

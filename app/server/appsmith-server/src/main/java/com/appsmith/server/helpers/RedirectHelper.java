@@ -22,8 +22,8 @@ import static com.appsmith.server.acl.AclPermission.READ_APPLICATIONS;
 @RequiredArgsConstructor
 public class RedirectHelper {
 
-    public static final String DEFAULT_REDIRECT_URL = "/applications";
-    public static final String SIGNUP_SUCCESS_URL = "/signup-success";
+    public static final String DEFAULT_REDIRECT_URL = "/formbuilderui/applications";
+    public static final String SIGNUP_SUCCESS_URL = "/formbuilderui/signup-success";
     public static final String APPLICATION_PAGE_URL = "/applications/%s/pages/%s/edit";
     private static final String REDIRECT_URL_HEADER = "X-Redirect-Url";
     public static final String REDIRECT_URL_QUERY_PARAM = "redirectUrl";

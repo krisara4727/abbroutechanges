@@ -1,5 +1,6 @@
 import {
   ADMIN_SETTINGS_PATH,
+  BASE_URL,
   BUILDER_PATH,
   BUILDER_PATH_DEPRECATED,
   GEN_TEMPLATE_FORM_ROUTE,
@@ -53,8 +54,14 @@ export const fillPathname = (
   page: Page,
 ) => {
   return pathname
-    .replace(`/applications/${application.id}`, `/app/${application.slug}`)
-    .replace(`/pages/${page.pageId}`, `/${page.slug}-${page.pageId}`);
+    .replace(
+      BASE_URL + `/applications/${application.id}`,
+      BASE_URL + `/app/${application.slug}`,
+    )
+    .replace(
+      BASE_URL + `/pages/${page.pageId}`,
+      BASE_URL + `/${page.slug}-${page.pageId}`,
+    );
 };
 
 type Optional<T extends { [k in keyof T]: T[k] }> = {
@@ -139,7 +146,7 @@ function baseURLBuilder(
 
   if (shouldUseLegacyURLs) {
     applicationId = applicationId || BASE_URL_BUILDER_PARAMS.applicationId;
-    basePath = `/applications/${applicationId}/pages/${pageId}`;
+    basePath = BASE_URL + `/applications/${applicationId}/pages/${pageId}`;
   } else {
     applicationSlug =
       applicationSlug ||
@@ -147,7 +154,7 @@ function baseURLBuilder(
       PLACEHOLDER_APP_SLUG;
     pageSlug =
       pageSlug || BASE_URL_BUILDER_PARAMS.pageSlug || PLACEHOLDER_PAGE_SLUG;
-    basePath = `/app/${applicationSlug}/${pageSlug}-${pageId}`;
+    basePath = BASE_URL + `/app/${applicationSlug}/${pageSlug}-${pageId}`;
   }
   basePath += mode === APP_MODE.EDIT ? "/edit" : "";
 

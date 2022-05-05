@@ -82,10 +82,7 @@ import {
   ERROR_ACTION_RENAME_FAIL,
 } from "@appsmith/constants/messages";
 import { merge, get } from "lodash";
-import {
-  fixActionPayloadForMongoQuery,
-  getConfigInitialValues,
-} from "components/formControls/utils";
+import { getConfigInitialValues } from "components/formControls/utils";
 import AppsmithConsole from "utils/AppsmithConsole";
 import { ENTITY_TYPE } from "entities/AppsmithConsole";
 import LOG_TYPE from "entities/AppsmithConsole/logtype";
@@ -120,7 +117,6 @@ import {
   queryEditorIdURL,
   saasEditorApiIdURL,
 } from "RouteBuilder";
-import { PLUGIN_PACKAGE_MONGO } from "constants/QueryEditorConstants";
 
 export function* createActionSaga(
   actionPayload: ReduxAction<
@@ -320,16 +316,7 @@ export function* updateActionSaga(
       action = transformRestAction(action);
     }
 
-    /* NOTE: This  is fix for a missing command config */
-    const plugin = yield select(getPlugin, action.pluginId);
-    if (action && plugin.packageName === PLUGIN_PACKAGE_MONGO) {
-      /* eslint-disable-next-line */
-      //@ts-ignore
-      action = fixActionPayloadForMongoQuery(action);
-    }
     const response: GenericApiResponse<Action> = yield ActionAPI.updateAction(
-      /* eslint-disable-next-line */
-      //@ts-ignore
       action,
     );
     const isValidResponse = yield validateResponse(response);
@@ -339,18 +326,18 @@ export function* updateActionSaga(
         response.data.id,
       );
 
-      if (action?.pluginType === PluginType.DB) {
+      if (action.pluginType === PluginType.DB) {
         AnalyticsUtil.logEvent("SAVE_QUERY", {
           queryName: action.name,
           pageName,
         });
-      } else if (action?.pluginType === PluginType.API) {
+      } else if (action.pluginType === PluginType.API) {
         AnalyticsUtil.logEvent("SAVE_API", {
           apiId: response.data.id,
           apiName: response.data.name,
           pageName: pageName,
         });
-      } else if (action?.pluginType === PluginType.SAAS) {
+      } else if (action.pluginType === PluginType.SAAS) {
         AnalyticsUtil.logEvent("SAVE_SAAS", {
           apiId: response.data.id,
           apiName: response.data.name,

@@ -1,3 +1,5 @@
+import restApi from "assets/images/RestAPI.png";
+
 export const mockPlugins = [
   {
     id: "623a809913b3311bd5e77228",
@@ -23,7 +25,8 @@ export const mockPlugins = [
     name: "REST API",
     type: "API",
     packageName: "restapi-plugin",
-    iconLocation: "https://assets.appsmith.com/RestAPI.png",
+    iconLocation: restApi,
+    //iconLocation: "https://assets.appsmith.com/RestAPI.png",
     uiComponent: "ApiEditorForm",
     datasourceComponent: "RestAPIDatasourceForm",
     defaultInstall: true,

@@ -84,6 +84,7 @@ import Boxed from "./GuidedTour/Boxed";
 import EndTour from "./GuidedTour/EndTour";
 import { GUIDED_TOUR_STEPS } from "./GuidedTour/constants";
 import { viewerURL } from "RouteBuilder";
+import { executeSaveTrigger } from "sagas/TokenSagas";
 
 const HeaderWrapper = styled.div`
   width: 100%;
@@ -270,6 +271,7 @@ export function EditorHeader(props: EditorHeaderProps) {
       const updatedIsSnipingMode = isSnipingMode === "true";
       dispatch(setSnipingModeAction(updatedIsSnipingMode));
     }
+    if (applicationId) dispatch(executeSaveTrigger(applicationId));
   }, [location]);
 
   const [isPopoverOpen, setIsPopoverOpen] = useState<boolean>(false);

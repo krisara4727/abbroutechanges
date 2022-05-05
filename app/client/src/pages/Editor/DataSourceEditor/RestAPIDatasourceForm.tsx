@@ -371,6 +371,7 @@ class DatasourceRestAPIEditor extends React.Component<
     const { hiddenHeader, isNewDatasource, pluginImage } = this.props;
     return !hiddenHeader ? (
       <Header>
+        {console.log("chivte restapidatasourceform.tsx", pluginImage)}
         <FormTitleContainer>
           <PluginImage alt="Datasource" src={pluginImage} />
           <FormTitle focusOnMount={isNewDatasource} />

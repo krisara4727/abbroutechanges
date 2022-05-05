@@ -10,6 +10,8 @@ import { Icon } from "@blueprintjs/core";
 import { ControlIcons } from "icons/ControlIcons";
 import { ReactComponent as ApiIcon } from "assets/icons/menu/api-colored.svg";
 import { ReactComponent as CurlIcon } from "assets/images/Curl-logo.svg";
+import restApi from "assets/images/RestAPI.png";
+import postgresql from "assets/images/postgresql.svg";
 
 export const ENTITY_ICON_SIZE = 16;
 
@@ -155,8 +157,14 @@ const PluginIcon = styled.img`
 `;
 
 export const getPluginIcon = (plugin?: Plugin) => {
+  console.log("chivte  plugin icon", plugin?.packageName);
   if (plugin && plugin.iconLocation) {
-    return <PluginIcon alt={plugin.packageName} src={plugin.iconLocation} />;
+    return (
+      <PluginIcon
+        alt={plugin.packageName}
+        src={plugin.packageName === "postgres-plugin" ? postgresql : restApi}
+      />
+    );
   }
   return <PluginIcon alt="plugin-placeholder" src={ImageAlt} />;
 };

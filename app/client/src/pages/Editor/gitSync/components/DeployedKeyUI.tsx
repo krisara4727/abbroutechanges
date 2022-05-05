@@ -61,7 +61,7 @@ const KeyText = styled.span`
   font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
-  color: ${Colors.COD_GRAY};
+  color: ${Colors.CODE_GRAY};
 `;
 
 const MoreMenuWrapper = styled.div`

@@ -122,6 +122,7 @@ class DatasourceDBEditor extends JSONtoForm<Props> {
       >
         {!this.props.hiddenHeader && (
           <Header>
+            {console.log("chivte DBForm.tsx", this.props.pluginImage)}
             <FormTitleContainer>
               <PluginImage alt="Datasource" src={this.props.pluginImage} />
               <FormTitle focusOnMount={this.props.isNewDatasource} />

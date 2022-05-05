@@ -16,6 +16,7 @@ import { PopperModifiers } from "@blueprintjs/core";
 import {
   PROFILE,
   ADMIN_SETTINGS_CATEGORY_DEFAULT_PATH,
+  BASE_URL,
 } from "constants/routes";
 import { Colors } from "constants/Colors";
 import TooltipComponent from "components/ads/Tooltip";
@@ -102,7 +103,9 @@ export default function ProfileDropdown(props: TagProps) {
     >
       <ProfileImage
         className="t--profile-menu-icon"
-        source={!!props.photoId ? `/api/v1/assets/${props.photoId}` : ""}
+        source={
+          !!props.photoId ? BASE_URL + `/api/v1/assets/${props.photoId}` : ""
+        }
         userName={props.name || props.userName}
       />
     </TooltipComponent>

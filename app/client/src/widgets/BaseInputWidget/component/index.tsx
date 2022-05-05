@@ -308,9 +308,10 @@ const TextInputWrapper = styled.div<{
   width: 100%;
   display: flex;
   flex: 1;
-  min-height: 36px;
+  overflow-x: hidden;
   ${({ inputHtmlType }) =>
     inputHtmlType && inputHtmlType !== InputTypes.TEXT && `&&& {flex-grow: 0;}`}
+  min-height: 36px;
 `;
 
 export type InputHTMLType = "TEXT" | "NUMBER" | "PASSWORD" | "EMAIL" | "TEL";

@@ -66,10 +66,11 @@ const loadingIndicator = <PageLoadingBar />;
 
 function changeAppBackground(currentTheme: any) {
   if (
-    trimTrailingSlash(window.location.pathname) === "/applications" ||
-    window.location.pathname.indexOf("/settings/") !== -1 ||
-    trimTrailingSlash(window.location.pathname) === "/profile" ||
-    trimTrailingSlash(window.location.pathname) === "/signup-success"
+    trimTrailingSlash(window.location.pathname) ===
+      BASE_URL + "/applications" ||
+    window.location.pathname.indexOf(BASE_URL + "/settings/") !== -1 ||
+    trimTrailingSlash(window.location.pathname) === BASE_URL + "/profile" ||
+    trimTrailingSlash(window.location.pathname) === BASE_URL + "/signup-success"
   ) {
     document.body.style.backgroundColor =
       currentTheme.colors.homepageBackground;
@@ -115,7 +116,12 @@ function AppRouter(props: {
           <>
             <AppHeader />
             <Switch>
-              <SentryRoute component={LandingScreen} exact path={BASE_URL} />
+              <SentryRoute component={LandingScreen} exact path="/" />
+              <SentryRoute
+                component={LandingScreen}
+                exact
+                path={BASE_URL ? BASE_URL : "/"}
+              />
               <Redirect exact from={BASE_LOGIN_URL} to={AUTH_LOGIN_URL} />
               <Redirect exact from={BASE_SIGNUP_URL} to={SIGN_UP_URL} />
               <SentryRoute component={OrganizationLoader} path={ORG_URL} />

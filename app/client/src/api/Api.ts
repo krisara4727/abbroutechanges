@@ -7,10 +7,11 @@ import {
   apiSuccessResponseInterceptor,
 } from "api/ApiUtils";
 import { API_REQUEST_HEADERS } from "constants/AppsmithActionConstants/ActionConstants";
+import { BASE_URL } from "constants/routes";
 
 //TODO(abhinav): Refactor this to make more composable.
 export const apiRequestConfig = {
-  baseURL: "/api/",
+  baseURL: BASE_URL + "/api/",
   timeout: REQUEST_TIMEOUT_MS,
   headers: API_REQUEST_HEADERS,
   withCredentials: true,

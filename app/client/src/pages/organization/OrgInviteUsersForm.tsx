@@ -125,7 +125,7 @@ const UserRole = styled.div`
   flex-basis: 25%;
   flex-shrink: 0;
   .${Classes.TEXT} {
-    color: ${Colors.COD_GRAY};
+    color: ${(props) => props.theme.colors.modal.headerText};
   }
 `;
 
@@ -138,14 +138,6 @@ const UserName = styled.div`
 
     &:nth-child(1) {
       margin-bottom: 1px;
-    }
-
-    &[type="h5"] {
-      color: ${Colors.COD_GRAY};
-    }
-
-    &[type="p2"] {
-      color: ${Colors.GRAY};
     }
   }
 `;
@@ -163,8 +155,8 @@ const Loading = styled(Spinner)`
 const MailConfigContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 24px 4px;
-  padding-bottom: 0;
+  padding: ${(props) => props.theme.spaces[9]}px
+    ${(props) => props.theme.spaces[2]}px;
   align-items: center;
   && > span {
     color: ${(props) => props.theme.colors.modal.email.message};

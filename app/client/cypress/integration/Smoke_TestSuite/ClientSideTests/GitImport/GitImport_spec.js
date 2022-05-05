@@ -21,7 +21,7 @@ describe("Git import flow", function() {
     });
   });
   it("Import an app from JSON with Postgres, MySQL, Mongo db", () => {
-    cy.NavigateToHome();
+    cy.get(homePage.homeIcon).click();
     cy.get(homePage.optionsIcon)
       .first()
       .click();
@@ -54,10 +54,6 @@ describe("Git import flow", function() {
         "contain",
         "Application imported successfully",
       ); */
-      cy.get(reconnectDatasourceModal.ImportSuccessModal).should("be.visible");
-      cy.get(reconnectDatasourceModal.ImportSuccessModalCloseBtn).click({
-        force: true,
-      });
       cy.wait(1000);
       cy.generateUUID().then((uid) => {
         repoName = uid;
@@ -102,11 +98,6 @@ describe("Git import flow", function() {
     cy.get(datasourceEditor.sectionAuthentication).click();
     cy.testSaveDatasource();
     cy.wait(2000);
-    cy.get(reconnectDatasourceModal.ImportSuccessModal).should("be.visible");
-    cy.get(reconnectDatasourceModal.ImportSuccessModalCloseBtn).click({
-      force: true,
-    });
-    cy.wait(1000);
     /* cy.get(homePage.toastMessage).should(
       "contain",
      "Application imported successfully",

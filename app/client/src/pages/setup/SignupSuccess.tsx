@@ -3,6 +3,7 @@ import { getAppsmithConfigs } from "@appsmith/configs";
 import { ReduxActionTypes } from "@appsmith/constants/ReduxActionConstants";
 import {
   APPLICATIONS_URL,
+  BASE_URL,
   BUILDER_PATH,
   BUILDER_PATH_DEPRECATED,
   SIGNUP_SUCCESS_URL,
@@ -31,6 +32,11 @@ export function SignupSuccess() {
   const redirectUrl = urlObject?.searchParams.get("redirectUrl");
   const shouldEnableFirstTimeUserOnboarding = urlObject?.searchParams.get(
     "enableFirstTimeUserExperience",
+  );
+  console.log(
+    "chivte signup ",
+    redirectUrl,
+    shouldEnableFirstTimeUserOnboarding,
   );
   useEffect(() => {
     PerformanceTracker.stopTracking(PerformanceTransactionName.SIGN_UP);

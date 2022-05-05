@@ -6,6 +6,7 @@ import { getCurrentThemeDetails, ThemeMode } from "selectors/themeSelectors";
 import { AppState } from "reducers";
 import { setThemeMode } from "actions/themeActions";
 import equal from "fast-deep-equal/es6";
+import { BASE_URL } from "constants/routes";
 const SentryRoute = Sentry.withSentryRouting(Route);
 
 interface AppRouteProps {
@@ -29,8 +30,8 @@ class AppRouteWithoutProps extends React.Component<AppRouteProps> {
   render() {
     const { currentTheme, ...rest } = this.props;
     if (
-      window.location.pathname === "/applications" ||
-      window.location.pathname.indexOf("/settings/") !== -1
+      window.location.pathname === BASE_URL + "/applications" ||
+      window.location.pathname.indexOf(BASE_URL + "/settings/") !== -1
     ) {
       document.body.style.backgroundColor =
         currentTheme.colors.homepageBackground;

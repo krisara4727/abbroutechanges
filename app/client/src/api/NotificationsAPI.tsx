@@ -1,9 +1,12 @@
 import { AxiosPromise } from "axios";
+import { BASE_URL } from "constants/routes";
 import Api from "./Api";
 import { ApiResponse } from "./ApiResponses";
 
 class NotificationsApi extends Api {
-  static baseURL = "v1/notifications";
+  static baseURL =
+    //BASE_URL +
+    "v1/notifications";
   static markAsReadURL = `${NotificationsApi.baseURL}/isRead`;
   static markAllAsReadURL = `${NotificationsApi.markAsReadURL}/all`;
   static fetchUnreadNotificationsCountURL = `${NotificationsApi.baseURL}/count/unread`;

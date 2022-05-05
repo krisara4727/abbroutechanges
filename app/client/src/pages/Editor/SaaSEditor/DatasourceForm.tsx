@@ -104,6 +104,10 @@ class DatasourceSaaSEditor extends JSONtoForm<Props> {
         {!hiddenHeader && (
           <Header>
             <FormTitleContainer>
+              {console.log(
+                "chivte datasourceform",
+                this.props.pluginPackageName,
+              )}
               <PluginImage alt="Datasource" src={this.props.pluginImage} />
               <FormTitle focusOnMount={this.props.isNewDatasource} />
             </FormTitleContainer>

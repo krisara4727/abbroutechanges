@@ -131,15 +131,15 @@ describe("Undo/Redo functionality", function() {
       .first()
       .focus()
       .type("{downarrow}{downarrow}{downarrow}  ")
-      .type("testJSFunction:()=>{},");
+      .type("test:()=>{},");
     cy.get("body").type(`{${modifierKey}}z{${modifierKey}}z{${modifierKey}}z`);
-    // verifying testJSFunction is not visible on page after undo
-    cy.contains("testJSFunction").should("not.exist");
+    // verifying test function is not visible in response tab after undo
+    cy.get(".function-name").should("not.contain.text", "test");
     cy.get("body").type(
       `{${modifierKey}}{shift}z{${modifierKey}}{shift}z{${modifierKey}}{shift}z`,
     );
-    // verifying testJSFunction is visible on page after redo
-    cy.contains("testJSFunction").should("exist");
+    // verifying test function is visible in response tab after redo
+    cy.get(".function-name").should("contain.text", "test");
     // performing undo from app menu
     cy.get(".t--application-name").click({ force: true });
     cy.get("li:contains(Edit)")

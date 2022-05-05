@@ -21,6 +21,7 @@ import { getAllApplications } from "actions/applicationActions";
 import { truncateTextUsingEllipsis } from "constants/DefaultTheme";
 import { IconSize } from "components/ads/Icon";
 import { useMediaQuery } from "react-responsive";
+import { BASE_URL } from "constants/routes";
 const SentryRoute = Sentry.withSentryRouting(Route);
 
 const LinkToApplications = styled(Link)`
@@ -92,7 +93,7 @@ export default function Settings() {
   const isMobile: boolean = useMediaQuery({ maxWidth: 767 });
   return (
     <SettingsWrapper isMobile={isMobile}>
-      <LinkToApplications to={"/applications"}>
+      <LinkToApplications to={BASE_URL + "/applications"}>
         <Icon color="#9F9F9F" icon="chevron-left" />
         <Text className="t--organization-header" type={TextType.H1}>
           {currentOrg && currentOrg.name}

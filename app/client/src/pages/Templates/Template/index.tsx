@@ -96,7 +96,6 @@ const StyledButton = styled(Button)`
 export interface TemplateProps {
   template: TemplateInterface;
   size?: string;
-  onClick?: () => void;
 }
 
 const Template = (props: TemplateProps) => {
@@ -110,7 +109,6 @@ const Template = (props: TemplateProps) => {
 export interface TemplateLayoutProps {
   template: TemplateInterface;
   className?: string;
-  onClick?: () => void;
 }
 
 export function TemplateLayout(props: TemplateLayoutProps) {
@@ -125,7 +123,6 @@ export function TemplateLayout(props: TemplateLayoutProps) {
   const [showForkModal, setShowForkModal] = useState(false);
   const onClick = () => {
     history.push(templateIdUrl({ id }));
-    props.onClick && props.onClick();
   };
 
   const onForkButtonTrigger = (e: React.MouseEvent<HTMLElement>) => {

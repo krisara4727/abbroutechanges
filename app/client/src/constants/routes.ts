@@ -6,35 +6,40 @@ const { match } = require("path-to-regexp");
 export const PLACEHOLDER_APP_SLUG = "application";
 export const PLACEHOLDER_PAGE_ID = "pageId";
 export const PLACEHOLDER_PAGE_SLUG = "page";
-export const BASE_URL = "/";
-export const ORG_URL = "/org";
-export const PAGE_NOT_FOUND_URL = "/404";
-export const SERVER_ERROR_URL = "/500";
-export const APPLICATIONS_URL = `/applications`;
+export const BASE_URL = "/formbuilderui";
+export const ORG_URL = BASE_URL + "/org";
+export const PAGE_NOT_FOUND_URL = BASE_URL + "/404";
+export const SERVER_ERROR_URL = BASE_URL + "/500";
+export const APPLICATIONS_URL = BASE_URL + `/applications`;
 
-export const TEMPLATES_PATH = "/templates";
-export const TEMPLATES_ID_PATH = "/templates/:templateId";
+export const TEMPLATES_PATH = BASE_URL + "/templates";
+export const TEMPLATES_ID_PATH = BASE_URL + "/templates/:templateId";
 
-export const USER_AUTH_URL = "/user";
-export const PROFILE = "/profile";
+export const USER_AUTH_URL = BASE_URL + "/user";
+export const PROFILE = BASE_URL + "/profile";
 export const GIT_PROFILE_ROUTE = `${PROFILE}/git`;
-export const USERS_URL = "/users";
-export const UNSUBSCRIBE_EMAIL_URL = "/unsubscribe/discussion/:threadId";
-export const SETUP = "/setup/welcome";
+export const USERS_URL = BASE_URL + "/users";
+export const UNSUBSCRIBE_EMAIL_URL =
+  BASE_URL + "/unsubscribe/discussion/:threadId";
+export const SETUP = BASE_URL + "/setup/welcome";
 export const FORGOT_PASSWORD_URL = `${USER_AUTH_URL}/forgotPassword`;
 export const RESET_PASSWORD_URL = `${USER_AUTH_URL}/resetPassword`;
-export const BASE_SIGNUP_URL = `/signup`;
+export const BASE_SIGNUP_URL = BASE_URL + `/signup`;
 export const SIGN_UP_URL = `${USER_AUTH_URL}/signup`;
-export const BASE_LOGIN_URL = `/login`;
+export const BASE_LOGIN_URL = BASE_URL + `/login`;
 export const AUTH_LOGIN_URL = `${USER_AUTH_URL}/login`;
-export const SIGNUP_SUCCESS_URL = `/signup-success`;
+export const SIGNUP_SUCCESS_URL = BASE_URL + `/signup-success`;
 export const ORG_INVITE_USERS_PAGE_URL = `${ORG_URL}/invite`;
 export const ORG_SETTINGS_PAGE_URL = `${ORG_URL}/settings`;
-export const BUILDER_PATH_DEPRECATED = `/applications/:applicationId/(pages)?/:pageId?/edit`;
-export const BUILDER_PATH = `/app/:applicationSlug/:pageSlug(.*\-):pageId/edit`;
-export const VIEWER_PATH = `/app/:applicationSlug/:pageSlug(.*\-):pageId`;
-export const VIEWER_PATH_DEPRECATED = `/applications/:applicationId/(pages)?/:pageId?`;
-export const VIEWER_FORK_PATH = `/fork`;
+export const BUILDER_PATH_DEPRECATED =
+  BASE_URL + `/applications/:applicationId/(pages)?/:pageId?/edit`;
+export const BUILDER_PATH =
+  BASE_URL + `/app/:applicationSlug/:pageSlug(.*\-):pageId/edit`;
+export const VIEWER_PATH =
+  BASE_URL + `/app/:applicationSlug/:pageSlug(.*\-):pageId`;
+export const VIEWER_PATH_DEPRECATED =
+  BASE_URL + `/applications/:applicationId/(pages)?/:pageId?`;
+export const VIEWER_FORK_PATH = BASE_URL + `/fork`;
 export const INTEGRATION_EDITOR_PATH = `/datasources/:selectedTab`;
 export const API_EDITOR_BASE_PATH = `/api`;
 export const API_EDITOR_ID_PATH = `${API_EDITOR_BASE_PATH}/:apiId`;
@@ -52,11 +57,15 @@ export const GENERATE_TEMPLATE_PATH = `/${GEN_TEMPLATE_URL}`;
 export const GEN_TEMPLATE_FORM_ROUTE = "/form";
 export const GENERATE_TEMPLATE_FORM_PATH = `${GENERATE_TEMPLATE_PATH}${GEN_TEMPLATE_FORM_ROUTE}`;
 export const BUILDER_CHECKLIST_PATH = `/checklist`;
-export const ADMIN_SETTINGS_PATH = "/settings";
-export const ADMIN_SETTINGS_CATEGORY_DEFAULT_PATH = "/settings/general";
-export const ADMIN_SETTINGS_CATEGORY_PATH = "/settings/:category/:subCategory?";
-export const BUILDER_PATCH_PATH = `/:applicationSlug/:pageSlug(.*\-):pageId/edit`;
-export const VIEWER_PATCH_PATH = `/:applicationSlug/:pageSlug(.*\-):pageId`;
+export const ADMIN_SETTINGS_PATH = BASE_URL + "/settings";
+export const ADMIN_SETTINGS_CATEGORY_DEFAULT_PATH =
+  BASE_URL + "/settings/general";
+export const ADMIN_SETTINGS_CATEGORY_PATH =
+  BASE_URL + "/settings/:category/:subCategory?";
+export const BUILDER_PATCH_PATH =
+  BASE_URL + `/:applicationSlug/:pageSlug(.*\-):pageId/edit`;
+export const VIEWER_PATCH_PATH =
+  BASE_URL + `/:applicationSlug/:pageSlug(.*\-):pageId`;
 
 export const matchApplicationPath = match(APPLICATIONS_URL);
 export const matchApiBasePath = match(API_EDITOR_BASE_PATH);

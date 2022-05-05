@@ -4,6 +4,7 @@ import { TableWidgetProps } from "../constants";
 import { Colors } from "constants/Colors";
 import { get } from "lodash";
 import { IconNames } from "@blueprintjs/icons";
+import { TabulatorWidgetProps } from "widgets/TabulatorWidget/widget";
 
 export enum ColumnTypes {
   TEXT = "text",
@@ -369,5 +370,23 @@ export const hideByColumnType = (
     ? propertyPath
     : getBasePropertyPath(propertyPath);
   const columnType = get(props, `${baseProperty}.columnType`, "");
+  return !columnTypes.includes(columnType);
+};
+
+export const hideByColumnType2 = (
+  props: TabulatorWidgetProps,
+
+  propertyPath: string,
+
+  columnTypes: any,
+
+  shouldUsePropertyPath?: boolean,
+) => {
+  const baseProperty = shouldUsePropertyPath
+    ? propertyPath
+    : getBasePropertyPath(propertyPath);
+
+  const columnType = get(props, `${baseProperty}.columnType`, "");
+
   return !columnTypes.includes(columnType);
 };

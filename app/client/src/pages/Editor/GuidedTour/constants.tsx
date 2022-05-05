@@ -49,10 +49,6 @@ export const Classes = {
 
 export const GuidedTourEntityNames = {
   BUTTON_WIDGET: "UpdateButton",
-  NAME_INPUT: "NameInput",
-  EMAIL_INPUT: "EmailInput",
-  COUNTRY_INPUT: "CountryInput",
-  DISPLAY_IMAGE: "DisplayImage",
 };
 
 export enum GUIDED_TOUR_STEPS {
@@ -428,21 +424,21 @@ export const Steps: StepsType = {
         text: <>{createMessage(STEP_FIVE_HINT_TEXT)}</>,
         steps: [
           <>
-            Connect <b>{GuidedTourEntityNames.EMAIL_INPUT}</b>
+            Connect <b>{`"Email Input"`}</b>
             {"'"}s Default Text Property to{" "}
             <code>
               &#123;&#123;CustomersTable.selectedRow.email&#125;&#125;
             </code>
           </>,
           <>
-            Connect <b>{GuidedTourEntityNames.COUNTRY_INPUT}</b>
+            Connect <b>{`"Country Input"`}</b>
             {"'"}s Default Text Property to{" "}
             <code>
               &#123;&#123;CustomersTable.selectedRow.country&#125;&#125;
             </code>
           </>,
           <>
-            Connect <b>{GuidedTourEntityNames.DISPLAY_IMAGE}</b>
+            Connect <b>{`"Display Image"`}</b>
             {"'"}s Image Property to{" "}
             <code>
               &#123;&#123;CustomersTable.selectedRow.image&#125;&#125;
@@ -515,7 +511,7 @@ export const Steps: StepsType = {
       {
         text: (
           <>
-            Select the button widget to see the properties in the property pane.
+            Select the button widget to see the properties in the propety pane.
             From the onClick dropdown, select <b>Execute a query</b> {"&"} then
             select <b>updateCustomerInfo</b> query
           </>

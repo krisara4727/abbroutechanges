@@ -61,6 +61,7 @@ function ListItemWrapper(props: {
       className={`t--ds-list ${selected ? "active" : ""}`}
       onClick={() => onClick(ds)}
     >
+      {console.log("chivte datasourcelistitem.tsx", plugin.image, plugin.name)}
       <PluginImage alt="Datasource" src={plugin.image} />
       <ListLabels>
         <DsTitle>

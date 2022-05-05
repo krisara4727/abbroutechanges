@@ -37,6 +37,10 @@ const BATCH_PRIORITY = {
     priority: 1,
     needsSaga: true,
   },
+  [ReduxActionTypes.SAVE_TOKEN]: {
+    priority: 1,
+    needsSaga: true,
+  },
 };
 
 const batches: ReduxAction<any>[][] = [];

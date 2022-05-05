@@ -15,6 +15,7 @@ export const ReduxSagaChannels = {
 };
 
 export const ReduxActionTypes = {
+  SAVE_TOKEN: "SAVE_TOKEN",
   DELETE_BRANCH_INIT: "DELETE_BRANCH_INIT",
   DELETING_BRANCH: "DELETING_BRANCH",
   DELETE_BRANCH_SUCCESS: "DELETE_BRANCH_SUCCESS",
@@ -699,7 +700,6 @@ export const ReduxActionTypes = {
   GET_TEMPLATE_SUCCESS: "GET_TEMPLATES_SUCCESS",
   START_EXECUTE_JS_FUNCTION: "START_EXECUTE_JS_FUNCTION",
   RESET_PAGE_LIST: "RESET_PAGE_LIST",
-  SET_ACTIVE_JS_ACTION: "SET_ACTIVE_JS_ACTION",
 };
 
 export type ReduxActionType = typeof ReduxActionTypes[keyof typeof ReduxActionTypes];
